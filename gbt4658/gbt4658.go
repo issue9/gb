@@ -2,8 +2,8 @@
 //
 // SPDX-License-Identifier: MIT
 
-// Package gb4658 GB/T 4658-2006 学历代码
-package gb4658
+// Package gbt4658 GB/T 4658-2006 学历代码
+package gbt4658
 
 var educations = map[string]string{
 	"10": "研究生教育",
