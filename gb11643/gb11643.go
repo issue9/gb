@@ -8,7 +8,7 @@ package gb11643
 import (
 	"time"
 
-	"github.com/issue9/web/locales"
+	"github.com/issue9/gb"
 )
 
 // 我国现行的身份证号码有两种标准：GB11643-1989、GB11643-1999：
@@ -36,7 +36,7 @@ type GB11643 struct {
 // Parse 分析身份证信息
 func Parse(bs string) (*GB11643, error) {
 	if !IsValid([]byte(bs)) {
-		return nil, locales.ErrInvalidFormat()
+		return nil, gb.ErrInvalidFormat()
 	}
 
 	switch len(bs) {
@@ -45,7 +45,7 @@ func Parse(bs string) (*GB11643, error) {
 	case 18:
 		return parse18(bs)
 	default:
-		return nil, locales.ErrInvalidFormat()
+		return nil, gb.ErrInvalidFormat()
 	}
 }
 

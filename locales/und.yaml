@@ -1,0 +1,6 @@
+languages:
+    - und
+messages:
+    - key: invalid format
+      message:
+        msg: invalid format

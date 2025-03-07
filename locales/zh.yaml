@@ -1,0 +1,8 @@
+languages:
+  - cmn-Hans
+  - zh-Hans
+  - zh-CN
+messages:
+  - key: invalid format
+    message:
+      msg: 无效的格式

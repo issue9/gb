@@ -8,7 +8,7 @@ package gb32100
 import (
 	"maps"
 
-	"github.com/issue9/web/locales"
+	"github.com/issue9/gb"
 )
 
 var (
@@ -103,7 +103,7 @@ type GB32100 struct {
 // Parse 解析统一信用代码至 [GB32100]
 func Parse(bs string) (*GB32100, error) {
 	if !IsValid([]byte(bs)) {
-		return nil, locales.ErrInvalidFormat()
+		return nil, gb.ErrInvalidFormat()
 	}
 
 	return &GB32100{
