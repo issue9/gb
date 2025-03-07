@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022-2024 caixw
+// SPDX-FileCopyrightText: 2022-2025 caixw
 //
 // SPDX-License-Identifier: MIT
 
@@ -15,7 +15,7 @@ import (
 func getWeight() []int {
 	l := 17
 	ret := make([]int, 17)
-	for i := 0; i < l; i++ {
+	for i := range l {
 		k := int(math.Pow(2, float64((l - i)))) // k值足够大，不能用byte保存
 		ret[i] = k % 11
 	}
