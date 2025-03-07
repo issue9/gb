@@ -5,6 +5,8 @@
 // Package gbt4658 GB/T 4658-2006 学历代码
 package gbt4658
 
+import "maps"
+
 var educations = map[string]string{
 	"10": "研究生教育",
 	"11": "博士研究生毕业",
@@ -56,8 +58,11 @@ var educations = map[string]string{
 	"90": "其他",
 }
 
-// Valid 验证数据的正确性
-func Valid(id string) bool {
+// All 返回所有学历代码
+func All() map[string]string { return maps.Clone(educations) }
+
+// IsValid 验证数据的正确性
+func IsValid(id string) bool {
 	_, found := educations[id]
 	return found
 }
