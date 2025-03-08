@@ -2,7 +2,7 @@
 //
 // SPDX-License-Identifier: MIT
 
-// Package gbt6565 职业分类代码
+// Package gbt6565 GB/T 6565-2015 职业分类代码
 package gbt6565
 
 import (
