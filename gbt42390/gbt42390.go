@@ -2,22 +2,25 @@
 //
 // SPDX-License-Identifier: MIT
 
-// Package gbt6565 GB/T 6565-2015 职业分类代码
-package gbt6565
+// Package gbt42390 GB/T 42390-2023 快递包装分类与代码
+package gbt42390
 
 import (
 	"iter"
 	"strings"
 )
 
-// All 遍历所有职业
+// All 遍历所有代码
 //
-// level 表示分类re级别，0 表示所有，1 表示大类，2 表示中类
+// level 返回的级别，可以有以下几个值：
+//   - 0 表示所有；
+//   - 1 表示一级分类；
+//   - 2 表示二级分类；
 func All(level int) iter.Seq2[string, string] {
 	switch level {
 	case 0:
 		return func(yield func(string, string) bool) {
-			for k, v := range classes {
+			for k, v := range codes {
 				if !yield(k, v) {
 					break
 				}
@@ -25,10 +28,11 @@ func All(level int) iter.Seq2[string, string] {
 		}
 	case 1:
 		return func(yield func(string, string) bool) {
-			for k, v := range classes {
+			for k, v := range codes {
 				if !strings.HasSuffix(k, "0000") {
 					continue
 				}
+
 				if !yield(k, v) {
 					break
 				}
@@ -36,10 +40,11 @@ func All(level int) iter.Seq2[string, string] {
 		}
 	case 2:
 		return func(yield func(string, string) bool) {
-			for k, v := range classes {
+			for k, v := range codes {
 				if !strings.HasSuffix(k, "00") {
 					continue
 				}
+
 				if !yield(k, v) {
 					break
 				}
@@ -50,9 +55,7 @@ func All(level int) iter.Seq2[string, string] {
 	}
 }
 
-// Parent 返回 code 的父级职业代码
-//
-// code 必须为一个有效的职业代码
+// Parent 返回 code 的父级分类
 func Parent(code string) string {
 	switch {
 	case code[3:] != "00":
@@ -64,11 +67,11 @@ func Parent(code string) string {
 	}
 }
 
-// Get 根据 code 返回对应的职业名称
-func Get(code string) string { return classes[code] }
+// Get 获取指定代码表示的家庭关系
+func Get(code string) string { return codes[code] }
 
-// IsValid 判断 code 是否是一个有效的职业代码
+// IsValid 验证数据的正确性
 func IsValid(code string) bool {
-	_, found := classes[code]
+	_, found := codes[code]
 	return found
 }
