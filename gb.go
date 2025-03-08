@@ -10,7 +10,7 @@ package gb
 
 import "github.com/issue9/localeutil"
 
-var errInvalidFromat = localeutil.Error("invalid format")
+var errInvalidFormat = localeutil.Error("invalid format")
 
 // ErrInvalidFormat 表示格式错误
-func ErrInvalidFormat() error { return errInvalidFromat }
+func ErrInvalidFormat() error { return errInvalidFormat }

@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022-2024 caixw
+// SPDX-FileCopyrightText: 2022-2025 caixw
 //
 // SPDX-License-Identifier: MIT
 
@@ -23,4 +23,8 @@ func TestIsValid(t *testing.T) {
 	for i, item := range validData {
 		a.True(IsValid([]byte(item)), "failed @ %d:%s", i, item)
 	}
+
+	a.False(IsValid([]byte("111"))).
+		False(IsValid([]byte("X1350100M000100Y43"))).
+		False(IsValid([]byte("88350100M000100Y43")))
 }
